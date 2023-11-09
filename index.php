@@ -37,6 +37,16 @@ if (!isset($_SESSION["user_id"])){ ?>
 <?php } ?>
 
 <?php
+if (isset($_SESSION["user_id"])){ ?>
+
+<h3>Comments</h3>
+<form action="includes/comments.inc.php" method="post">
+    <button>Go comment something!</button>
+</form>
+
+<?php } ?>
+
+<?php
 check_login_errors();
 ?>
 
