@@ -1,56 +1,70 @@
+<?php
+require_once 'includes/config_session.inc.php';
+require_once 'includes/signup_view.inc.php';
+require_once 'includes/login_view.inc.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome!</title>
     <link rel="stylesheet" href="css/main.css" type="text/css">
     <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <title>Welcome!</title>
 </head>
 <body>
 
-<header>
-    <h3><?php output_username(); ?></h3>
-</header>
+<h3>
 
-<main>
-    <?php if (!isset($_SESSION["user_id"])): ?>
-        <section class="login-section">
-            <h3>Login</h3>
-            <form action="includes/login.inc.php" method="post" class="login-form">
-                <input type="text" name="username" placeholder="Username">
-                <input type="password" name="pwd" placeholder="Password">
-                <button>Login</button>
-            </form>
-        </section>
-    <?php endif; ?>
+    <?php
 
-    <?php if (isset($_SESSION["user_id"])): ?>
-        <section class="comments-section">
-            <h3>Comments</h3>
-            <form action="includes/comments.inc.php" method="post" class="comments-form">
-                <button>Go comment something!</button>
-            </form>
-        </section>
-    <?php endif; ?>
+    output_username();
 
-    <?php check_login_errors(); ?>
+    ?>
 
-    <section class="signup-section">
-        <form action="includes/signup.inc.php" method="post" class="signup-form">
-            <?php signup_inputs(); ?>
-            <button>Signup</button>
-        </form>
-    </section>
+</h3>
+<?php
 
-    <?php check_signup_errors(); ?>
-</main>
+if (!isset($_SESSION["user_id"])){ ?>
 
-<footer>
-    <h3>Logout</h3>
-    <form action="includes/logout.inc.php" method="post" class="logout-form">
-        <button>Logout</button>
+    <h3>Login</h3>
+    <form action="includes/login.inc.php" method="post">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="pwd" placeholder="Password">
+        <button>Login</button>
     </form>
-</footer>
+
+<?php } ?>
+
+<?php
+if (isset($_SESSION["user_id"])){ ?>
+
+<h3>Comments</h3>
+<form action="includes/comments.inc.php" method="post">
+    <button>Go comment something!</button>
+</form>
+
+<?php } ?>
+
+<?php
+check_login_errors();
+?>
+
+<form action="includes/signup.inc.php" method="post">
+    <?php
+    signup_inputs()
+    ?>
+    <button>Signup</button>
+</form>
+
+<?php
+check_signup_errors();
+?>
+
+<h3>Logout</h3>
+<form action="includes/logout.inc.php" method="post" class="logoutForm">
+    <button>Logout</button>
+</form>
 
 </body>
 </html>
