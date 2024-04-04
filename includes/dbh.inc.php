@@ -1,9 +1,9 @@
 <?php
 
 $host = 'localhost';
-$dbname = 'logindb';
+$dbname = 'ticket_db';
 $dbusername = 'root';
-$dbpassword = 'admin';
+$dbpassword = 'Admin';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);

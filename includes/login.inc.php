@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         $_SESSION["last_regeneration"] = time();
 
-        header("Location: ../comments_page.php?loggedIn=true");
+        header("Location: ../../../website/ticket_system/index.php?loggedin_true");
 
         $pdo = null;
         $stmt = null;
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 } else{
 
-    header("Location: ../index.php");
+    header("Location: ../ticket_system/index.php");
     die();
 
 }
